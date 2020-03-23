@@ -13,20 +13,20 @@ namespace OnCall_Staffing.Models
         [Key]
         public int EmployeeID { get; set; }
 
-        [Required]
         [Display(Name = "First Name")]
+        [Required]
         public string FirstName { get; set; }
 
-        [Required]
         [Display(Name = "Last Name")]
+        [Required]
         public string LastName { get; set; }
 
-        [Required]
         [Display(Name = "Email Address")]
+        [Required]
         public EmailAddressAttribute EmailAddress { get; set; }
 
-        [Required]
         [Display(Name = "Phone Number")]
+        [Required]
         public PhoneAttribute PhoneNumber { get; set; }
 
         [Required]

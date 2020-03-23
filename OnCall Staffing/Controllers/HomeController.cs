@@ -12,6 +12,8 @@ namespace OnCall_Staffing.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public object Input { get; set; }
+        public object Role { get; set; }
 
         public HomeController(ILogger<HomeController> logger)
         {

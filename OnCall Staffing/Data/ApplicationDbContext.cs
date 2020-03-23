@@ -21,9 +21,17 @@ namespace OnCall_Staffing.Data
                 .HasData(
                 new IdentityRole
                 {
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                });
+                    Name = "Employer",
+                    NormalizedName = "EMPLOYER"
+                },
+                new IdentityRole
+                {
+                    Name = "Employee",
+                    NormalizedName = "EMPLOYEE"
+                }
+            );
         }
+        public DbSet<OnCall_Staffing.Models.Employer> Employer { get; set; }
+        public DbSet<OnCall_Staffing.Models.Employee> Employee { get; set; }
     }
 }

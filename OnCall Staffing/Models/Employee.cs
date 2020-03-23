@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace OnCall_Staffing.Models
 {
-    public class Employer
+    public class Employee
     {
         [Key]
-        public int EmployerID { get; set; }
+        public int EmployeeID { get; set; }
 
         [Required]
         [Display(Name = "First Name")]
@@ -29,6 +28,9 @@ namespace OnCall_Staffing.Models
         [Required]
         [Display(Name = "Phone Number")]
         public PhoneAttribute PhoneNumber { get; set; }
+
+        [Required]
+        public string Certifications { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

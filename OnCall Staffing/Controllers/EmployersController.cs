@@ -27,8 +27,7 @@ namespace OnCall_Staffing.Controllers
 
             var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
 
-            var postings = _context.Posting
-                .Include(p => p.PostingId)
+            var posting =  _context.Posting
                 .Include(p => p.Facility)
                 .Include(p => p.PositionTitle)
                 .Include(p => p.DateTime)
@@ -40,8 +39,8 @@ namespace OnCall_Staffing.Controllers
                 .Include(p => p.Address.State)
                 .Include(p => p.Address.ZipCode)
                 .ToList();
-            _context.SaveChanges();
-            return View(postings);
+            return View(posting);
+
             //var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
         }
 

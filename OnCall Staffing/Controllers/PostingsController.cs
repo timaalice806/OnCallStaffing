@@ -34,10 +34,22 @@ namespace OnCall_Staffing.Controllers
                 return NotFound();
             }
 
-            var posting = await _context.Posting
-                .Include(p => p.Address)
-                .Include(p => p.Employer)
-                .FirstOrDefaultAsync(m => m.PostingId == id);
+            var posting = _context.Posting
+                .Include(p => p.Facility)
+                .Include(p => p.PositionTitle)
+                .Include(p => p.DateTime)
+                .Include(p => p.PayRate)
+                .Include(p => p.PositionDescription)
+                .Include(p => p.ArrivalInstructions)
+                .Include(p => p.Address.StreetAddress)
+                .Include(p => p.Address.City)
+                .Include(p => p.Address.State)
+                .Include(p => p.Address.ZipCode)
+                .ToList();
+            return View(posting);
+            //.Include(p => p.Address)
+            //.Include(p => p.Employer)
+            //.FirstOrDefaultAsync(m => m.PostingId == id);
             if (posting == null)
             {
                 return NotFound();

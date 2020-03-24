@@ -23,8 +23,12 @@ namespace OnCall_Staffing.Controllers
         // GET: Employers
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+
+            //var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
+            return View(currentEmployer);
         }
 
         // GET: Employers/Details/5

@@ -27,8 +27,22 @@ namespace OnCall_Staffing.Controllers
 
             var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
 
+            var postings = _context.Posting
+                .Include(p => p.PostingId)
+                .Include(p => p.Facility)
+                .Include(p => p.PositionTitle)
+                .Include(p => p.DateTime)
+                .Include(p => p.PayRate)
+                .Include(p => p.PositionDescription)
+                .Include(p => p.ArrivalInstructions)
+                .Include(p => p.Address.StreetAddress)
+                .Include(p => p.Address.City)
+                .Include(p => p.Address.State)
+                .Include(p => p.Address.ZipCode)
+                .ToList();
+            _context.SaveChanges();
+            return View(postings);
             //var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
-            return View(currentEmployer);
         }
 
         // GET: Employers/Details/5

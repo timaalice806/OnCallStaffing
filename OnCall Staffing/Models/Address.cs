@@ -13,11 +13,5 @@ namespace OnCall_Staffing.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
 
-        [Display(Name = "Posting")]
-        [ForeignKey("PostingID")]
-        public int PostingID { get; set; }
-        public Posting Posting { get; set; }
-        [NotMapped]
-        public IEnumerable<Posting> Postings { get; set; }
     }
 }

@@ -23,6 +23,10 @@ namespace OnCall_Staffing.Models
         [Required]
         public DateTime DateTime { get; set; }
 
+        [Display(Name = "Pay Rate")]
+        [Required]
+        public string PayRate { get; set; }
+
         [Display(Name = "Position Description")]
         [Required]
         public string PositionDescription { get; set; }

@@ -33,5 +33,8 @@ namespace OnCall_Staffing.Data
         }
         public DbSet<OnCall_Staffing.Models.Employer> Employer { get; set; }
         public DbSet<OnCall_Staffing.Models.Employee> Employee { get; set; }
+        public DbSet<OnCall_Staffing.Models.Posting> Posting { get; set; }
+        public DbSet<OnCall_Staffing.Models.Address> Address { get; set; }
+        public DbSet<OnCall_Staffing.Models.PostingEmployeeJoin> PostingEmployeeJoin { get; set; }
     }
 }

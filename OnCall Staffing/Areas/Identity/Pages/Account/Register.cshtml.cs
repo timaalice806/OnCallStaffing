@@ -90,7 +90,19 @@ namespace OnCall_Staffing.Areas.Identity.Pages.Account
                     if(await _roleManager.RoleExistsAsync(Input.Role))
                     {
                         await _userManager.AddToRoleAsync(user, Input.Role);
+
+                        if (Input.Role == "Employer")
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return RedirectToAction("Create", "Employers");
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return RedirectToAction("Create", "Employees");
+                        }
                     }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

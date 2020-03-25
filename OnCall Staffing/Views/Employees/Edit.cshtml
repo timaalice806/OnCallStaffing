@@ -26,13 +26,24 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <select asp-for="Rate" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Certifications" class="control-label"></label>
                 <select asp-for="Certifications" class="form-control">
                     <option value="Home Health Aide">Home Health Aide</option>
                     <option value="Certified Nurse Assistant">Certified Nurse Assistant</option>
                     <option value="Medical Assistant">Medical Assistant</option>
                     <option value="Phlebotomist">Phlebotomist</option>
-                    <option value="Certified electrocardiogram Technician">Certified electrocardiogram Technician</option>
+                    <option value="Certified EKG Technician">Certified EKG Technician</option>
                     <option value="Licensed Practical Nurse">Licensed Practical Nurse</option>
                     <option value="Registered Nurse">Registered Nurse</option>
                     <option value="Respiratory Therapist">Respiratory Therapist</option>

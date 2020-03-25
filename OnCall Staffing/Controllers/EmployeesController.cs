@@ -95,7 +95,7 @@ namespace OnCall_Staffing.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeID,FirstName,LastName,Certifications,IdentityUserId")] Employee employee)
+        public async Task<IActionResult> Edit(int id, Employee employee)
         {
             if (id != employee.EmployeeID)
             {

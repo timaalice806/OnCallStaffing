@@ -31,6 +31,8 @@ namespace OnCall_Staffing.Models
 
         public string Certifications { get; set; }
 
+        public double Rate { get; set; }
+
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }

@@ -23,25 +23,26 @@ namespace OnCall_Staffing.Controllers
         // GET: Employers
         public async Task<IActionResult> Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            //var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
 
-            var posting =  _context.Posting
-                .Include(p => p.Facility)
-                .Include(p => p.PositionTitle)
-                .Include(p => p.DateTime)
-                .Include(p => p.PayRate)
-                .Include(p => p.PositionDescription)
-                .Include(p => p.ArrivalInstructions)
-                .Include(p => p.Address.StreetAddress)
-                .Include(p => p.Address.City)
-                .Include(p => p.Address.State)
-                .Include(p => p.Address.ZipCode)
-                .ToList();
-            return View(posting);
-
-            //var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
+            //var posting =  _context.Posting
+            //    .Include(p => p.Facility)
+            //    .Include(p => p.PositionTitle)
+            //    .Include(p => p.DateTime)
+            //    .Include(p => p.PayRate)
+            //    .Include(p => p.PositionDescription)
+            //    .Include(p => p.ArrivalInstructions)
+            //    .Include(p => p.Address.StreetAddress)
+            //    .Include(p => p.Address.City)
+            //    .Include(p => p.Address.State)
+            //    .Include(p => p.Address.ZipCode)
+            //    .Where(p => p.)
+            //    .ToList();
+          
+            var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Employers/Details/5
@@ -84,7 +85,7 @@ namespace OnCall_Staffing.Controllers
 
                 _context.Add(employer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Employers");
+                return RedirectToAction("Index", "Postings");
             }
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employer.IdentityUserId);
             return View(employer);

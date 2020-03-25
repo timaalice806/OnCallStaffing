@@ -71,7 +71,7 @@ namespace OnCall_Staffing.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostingId,PositionTitle,Facility,DateTime,PayRate,PositionDescription,ArrivalInstructions,AddressID,EmployerID")] Posting posting)
+        public async Task<IActionResult> Create(Posting posting)
         {
             if (ModelState.IsValid)
             {

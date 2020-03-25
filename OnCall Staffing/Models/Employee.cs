@@ -22,16 +22,13 @@ namespace OnCall_Staffing.Models
         public string LastName { get; set; }
 
         [EmailAddress]
-        [Required]
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
         [Phone]
-        [Required]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Required]
         public string Certifications { get; set; }
 
         [ForeignKey("IdentityUser")]

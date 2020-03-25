@@ -66,7 +66,6 @@ namespace OnCall_Staffing.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             [Required]
             public string Role { get; set; }
-            
         }
 
         public async Task OnGetAsync(string returnUrl = null)

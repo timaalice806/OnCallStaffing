@@ -9,8 +9,7 @@ namespace OnCall_Staffing.Models
 {
     public class Posting
     {
-        [Key]
-        public int PostingId { get; set; }
+        public int PostingID { get; set; }
 
         [Display(Name = "Position Title")]
         [Required]
@@ -48,5 +47,6 @@ namespace OnCall_Staffing.Models
         public Employer Employer { get; set; }
         [NotMapped]
         public IEnumerable<Employer> Employers { get; set; }
+        public ICollection<PostingEmployeeJoin> PostingEmployeeJoins { get; set; }
     }
 }

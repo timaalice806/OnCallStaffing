@@ -10,7 +10,6 @@ namespace OnCall_Staffing.Models
 {
     public class Employee
     {
-        [Key]
         public int EmployeeID { get; set; }
 
         [Display(Name = "First Name")]
@@ -33,8 +32,6 @@ namespace OnCall_Staffing.Models
 
         public double Rate { get; set; }
 
-        [ForeignKey("IdentityUser")]
-        public string IdentityUserId { get; set; }
-        public IdentityUser IdentityUser { get; set; }
+        public ICollection<PostingEmployeeJoin> PostingEmployeesJoins { get; set; }
     }
 }

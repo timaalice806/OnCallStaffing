@@ -172,7 +172,7 @@ namespace OnCall_Staffing.Controllers
 
         private bool PostingExists(int id)
         {
-            return _context.Posting.Any(e => e.PostingId == id);
+            return _context.Posting.Any(e => e.PostingID == id);
         }
     }
 }

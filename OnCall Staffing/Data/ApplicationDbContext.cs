@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OnCall_Staffing.Models;
 
 namespace OnCall_Staffing.Data
 {
@@ -28,8 +29,19 @@ namespace OnCall_Staffing.Data
                 {
                     Name = "Employee",
                     NormalizedName = "EMPLOYEE"
-                }
-            );
+                });
+
+            builder.Entity<PostingEmployeeJoin>()
+                .HasKey(pe => new { pe.PostingID, pe.EmployeeID });
+            builder.Entity<PostingEmployeeJoin>()
+                .HasOne(pe => pe.Posting)
+                .WithMany(p => p.PostingEmployeeJoins)
+                .HasForeignKey(pe => pe.PostingID);
+            builder.Entity<PostingEmployeeJoin>()
+                .HasOne(pe => pe.Employee)
+                .WithMany(e => e.PostingEmployeesJoins)
+                .HasForeignKey(pe => pe.EmployeeID);
+            
         }
         public DbSet<OnCall_Staffing.Models.Employer> Employer { get; set; }
         public DbSet<OnCall_Staffing.Models.Employee> Employee { get; set; }

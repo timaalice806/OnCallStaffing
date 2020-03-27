@@ -32,6 +32,10 @@ namespace OnCall_Staffing.Models
 
         public double Rate { get; set; }
 
+        [ForeignKey("IdentityUser")]
+        public string IdentityUserId { get; set; }
+        public IdentityUser IdentityUser { get; set; }
+
         public ICollection<PostingEmployeeJoin> PostingEmployeesJoins { get; set; }
     }
 }

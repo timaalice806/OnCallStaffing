@@ -109,7 +109,7 @@ namespace OnCall_Staffing.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PostingId,PositionTitle,Facility,DateTime,PayRate,PositionDescription,ArrivalInstructions,AddressID,EmployerID")] Posting posting)
         {
-            if (id != posting.PostingId)
+            if (id != posting.PostingID)
             {
                 return NotFound();
             }
@@ -123,7 +123,7 @@ namespace OnCall_Staffing.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostingExists(posting.PostingId))
+                    if (!PostingExists(posting.PostingID))
                     {
                         return NotFound();
                     }
@@ -150,7 +150,7 @@ namespace OnCall_Staffing.Controllers
             var posting = await _context.Posting
                 .Include(p => p.Address)
                 .Include(p => p.Employer)
-                .FirstOrDefaultAsync(m => m.PostingId == id);
+                .FirstOrDefaultAsync(m => m.PostingID == id);
             if (posting == null)
             {
                 return NotFound();

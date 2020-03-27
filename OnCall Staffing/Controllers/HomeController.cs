@@ -27,6 +27,11 @@ namespace OnCall_Staffing.Controllers
             _context = context;
         }
 
+        public IActionResult Landing()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -55,7 +60,6 @@ namespace OnCall_Staffing.Controllers
                 return View();
             }
         }
-
         public IActionResult Privacy()
         {
             return View();

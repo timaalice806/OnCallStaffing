@@ -15,7 +15,7 @@
             request = {
             location: center,
             radius: 80467,
-            //types: []
+            types: ['hospitals']
         };
         infoWindow = new google.maps.InfoWindow();
 
@@ -30,7 +30,7 @@
             var request = {
                 location: event.latLng,
                 radius: 80467,
-                //types: []
+                types: ['hospitals']
             };
             service.nearbySearch(request, callback);
         })

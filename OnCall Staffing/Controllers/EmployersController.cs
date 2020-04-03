@@ -23,26 +23,17 @@ namespace OnCall_Staffing.Controllers
         // GET: Employers
         public async Task<IActionResult> Index()
         {
-            //var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            //var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var currentEmployer = _context.Employer.Where(e => e.IdentityUserId == userId).FirstOrDefault();
 
-            //var posting =  _context.Posting
-            //    .Include(p => p.Facility)
-            //    .Include(p => p.PositionTitle)
-            //    .Include(p => p.DateTime)
-            //    .Include(p => p.PayRate)
-            //    .Include(p => p.PositionDescription)
-            //    .Include(p => p.ArrivalInstructions)
-            //    .Include(p => p.Address.StreetAddress)
-            //    .Include(p => p.Address.City)
-            //    .Include(p => p.Address.State)
-            //    .Include(p => p.Address.ZipCode)
-            //    .Where(p => p.)
-            //    .ToList();
-          
-            var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var rateEmployees = _context.Employee.Where(e => e.Rate >= 3).ToList();
+            _context.SaveChanges();
+
+            return View(rateEmployees);
+
+            //var applicationDbContext = _context.Employer.Include(e => e.IdentityUser);
+            //return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Employers/Details/5
@@ -85,7 +76,7 @@ namespace OnCall_Staffing.Controllers
 
                 _context.Add(employer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Postings");
+                return RedirectToAction("Index", "Employers");
             }
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employer.IdentityUserId);
             return View(employer);
@@ -99,13 +90,13 @@ namespace OnCall_Staffing.Controllers
                 return NotFound();
             }
 
-            var employer = await _context.Employer.FindAsync(id);
-            if (employer == null)
+            var employee = await _context.Employee.FindAsync(id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employer.IdentityUserId);
-            return View(employer);
+            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employee.IdentityUserId);
+            return View(employee);
         }
 
         // POST: Employers/Edit/5
@@ -113,9 +104,9 @@ namespace OnCall_Staffing.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployerID,FirstName,LastName,IdentityUserId")] Employer employer)
+        public async Task<IActionResult> Edit(int id, Employee employee)
         {
-            if (id != employer.EmployerID)
+            if (id != employee.EmployeeID)
             {
                 return NotFound();
             }
@@ -124,12 +115,12 @@ namespace OnCall_Staffing.Controllers
             {
                 try
                 {
-                    _context.Update(employer);
+                    _context.Update(employee);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployerExists(employer.EmployerID))
+                    if (!EmployerExists(employee.EmployeeID))
                     {
                         return NotFound();
                     }
@@ -140,8 +131,8 @@ namespace OnCall_Staffing.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employer.IdentityUserId);
-            return View(employer);
+            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", employee.IdentityUserId);
+            return View(employee);
         }
 
         // GET: Employers/Delete/5

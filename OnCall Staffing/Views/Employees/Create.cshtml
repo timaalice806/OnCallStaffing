@@ -25,7 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Certifications" class="control-label"></label>
-                <input asp-for="Certifications" class="form-control" />
+                <select asp-for="Certifications" class="form-control">
+                    <option value="Home Health Aide">Home Health Aide</option>
+                    <option value="Certified Nurse Assistant">Certified Nurse Assistant</option>
+                    <option value="Medical Assistant">Medical Assistant</option>
+                    <option value="Phlebotomist">Phlebotomist</option>
+                    <option value="Certified EKG Technician">Certified EKG Technician</option>
+                    <option value="Licensed Practical Nurse">Licensed Practical Nurse</option>
+                    <option value="Registered Nurse">Registered Nurse</option>
+                    <option value="Respiratory Therapist">Respiratory Therapist</option>
+                    <option value="Physical Therapist">Physical Therapist</option>
+                    <option value="Occupational Therapist">Occupational Therapist</option>
+                </select>
                 <span asp-validation-for="Certifications" class="text-danger"></span>
             </div>
             <div class="form-group">

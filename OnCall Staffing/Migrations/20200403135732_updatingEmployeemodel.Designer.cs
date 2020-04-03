@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnCall_Staffing.Data;
 
 namespace OnCall_Staffing.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200403135732_updatingEmployeemodel")]
+    partial class updatingEmployeemodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace OnCall_Staffing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c5f3a861-fb38-4824-9b9c-6d2e632863a6",
-                            ConcurrencyStamp = "4101d09f-dd70-459d-8ec2-6423da9679aa",
+                            Id = "fb674eea-97fa-4eab-b12b-86257fccfaf1",
+                            ConcurrencyStamp = "f08db3a2-0790-4b77-8033-a61e3b0a0f6a",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
                         },
                         new
                         {
-                            Id = "927721f3-0822-4746-a40f-a5badc9fcd2f",
-                            ConcurrencyStamp = "4caf7845-ac77-4ee9-8d92-950f4ed6614f",
+                            Id = "52ce566c-8819-4b51-aadd-bdbd926b1500",
+                            ConcurrencyStamp = "b99cf190-cbf3-434e-9325-27336cce29c8",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

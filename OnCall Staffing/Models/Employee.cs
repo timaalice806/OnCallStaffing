@@ -32,6 +32,8 @@ namespace OnCall_Staffing.Models
 
         public double Rate { get; set; }
 
+        public string Review { get; set; }
+
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
